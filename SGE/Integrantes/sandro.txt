@@ -2,4 +2,3 @@ nome         =sandro augusto andrade
 mat          = 14214290036
 pontos fortes= vontade de aprender
 pontos fracos= memoria fraca (esquecimento)
-jksdjsdjksdjk
