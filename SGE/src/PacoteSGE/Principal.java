@@ -296,7 +296,7 @@ public class Principal extends javax.swing.JFrame {
           }
           totalparcial =0;
       }
-     texto.setText("Menor valor  = "+Integer.toString(menorvalor)+"\n"+"Valor frete =  "+Integer.toString(frete[valordefrete])+"  Empresa = "+empresas[valordefrete]);
+     texto.setText("Valor do pedido  = "+Integer.toString(menorvalor)+"\n"+"Valor frete =  "+Integer.toString(frete[valordefrete])+"  Fornecedor = "+empresas[valordefrete]);
    }
     
 }
