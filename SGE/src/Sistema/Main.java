@@ -4,7 +4,7 @@ package Sistema;
 
 //importando do pacote interface, da classe interface
 
-import Interface.Interface;
+import Interface.TelaPrincipal;
 
 // o programa tem seu início aqui (public class Main)
 
@@ -35,7 +35,8 @@ public class Main {
 		// Criando as formas da interface grafica
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new Interface().setVisible(true);
+				new TelaPrincipal().setVisible(true);
+				
 			}
 		});
 		

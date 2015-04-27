@@ -147,6 +147,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
        
        
     }                                          
+    
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        
+    	Interface telaComprarMateriaPrima = new Interface();
+    	jDesktopPane1.add(telaComprarMateriaPrima);
+    	telaComprarMateriaPrima.setVisible(true);
+    	
+    	
+    }                                          
 
     /**
      * @param args the command line arguments

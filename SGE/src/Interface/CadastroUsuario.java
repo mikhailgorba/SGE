@@ -1,9 +1,6 @@
 package Interface;
 
-/**
- *
- * @author Mikhail
- */
+
 public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     /**
