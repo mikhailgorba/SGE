@@ -54,12 +54,12 @@ public class Sistema {
 
 		Fornecedor wayneInc = new Fornecedor();
 		wayneInc.setNome("Wayne Inc.");
-		wayneInc.setFrete(50.0);
-		wayneInc.setPrecoAluminio(50.0);
-		wayneInc.setPrecoParafuso(80.0);
-		wayneInc.setPrecoBorracha(20.0);
-		wayneInc.setPrecoCabo(20.0);
-		wayneInc.setPrecoPlastico(20.0);
+		wayneInc.setFrete(40.0);
+		wayneInc.setPrecoAluminio(40.0);
+		wayneInc.setPrecoParafuso(70.0);
+		wayneInc.setPrecoBorracha(10.0);
+		wayneInc.setPrecoCabo(10.0);
+		wayneInc.setPrecoPlastico(10.0);
 
 		fornecedores.add(wayneInc);
 
