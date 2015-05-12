@@ -31,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE GESTÃO EMPRESARIAL (SGE)");
+        setLocationByPlatform(true);
 
         jDesktopPane1.setDesktopManager(null);
 
@@ -40,17 +41,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(282, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addGap(349, 349, 349))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(155, 155, 155)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -92,6 +93,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Compras");
 
         jMenuItem4.setText("Materia-prima");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -102,16 +108,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jDesktopPane1)
         );
 
-        setBounds(0, 0, 781, 570);
+        setBounds(0, 0, 1285, 686);
     }// </editor-fold>                        
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -147,14 +151,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
        
        
     }                                          
-    
+
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        
-    	Interface telaComprarMateriaPrima = new Interface();
-    	jDesktopPane1.add(telaComprarMateriaPrima);
-    	telaComprarMateriaPrima.setVisible(true);
-    	
-    	
+        ComprasMateriaPrima telaComprasMateriaPrima = new ComprasMateriaPrima();
+        jDesktopPane1.add(telaComprasMateriaPrima);
+        telaComprasMateriaPrima.setVisible(true);
+
     }                                          
 
     /**
@@ -188,7 +190,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new EfetuarLogin().setVisible(true);
             }
         });
     }
