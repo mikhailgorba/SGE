@@ -16,18 +16,21 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
  *
  * @author Mikhail
  */
-public class Interface extends javax.swing.JInternalFrame {
+public class ComprasMateriaPrima extends javax.swing.JInternalFrame {
 
+    private Sistema.Sistema sistema;
+    
     /**
      * Creates new form ComprasMateriaPrima
      */
-    public Interface() {
+    public ComprasMateriaPrima() {
         initComponents();
-        
+        sistema = new Sistema.Sistema();
         carregaFornecedores();
         
     }
@@ -66,9 +69,9 @@ public class Interface extends javax.swing.JInternalFrame {
             //tabela.getColumnModel().getColumn(2).setPreferredWidth(50);
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ComprasMateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ComprasMateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -230,7 +233,7 @@ public class Interface extends javax.swing.JInternalFrame {
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {                                               
 
         String resultado = sistema.pesquisar(campoQuantidadeAluminio.getText(), campoQuantidadeParafuso.getText(), campoQuantidadeBorracha.getText(), campoQuantidadeCabo.getText(), campoQuantidadePlastico.getText()); 
-		texto.setText(resultado);	
+		areaTexto.setText(resultado);	
         
         
         
@@ -257,4 +260,3 @@ public class Interface extends javax.swing.JInternalFrame {
     private javax.swing.JTable tabela;
     // End of variables declaration                   
 }
-	
