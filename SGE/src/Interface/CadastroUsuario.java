@@ -9,7 +9,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
+
 public class CadastroUsuario extends javax.swing.JInternalFrame {
+    private boolean admin = (false);
 
     public CadastroUsuario() {
         initComponents();
@@ -45,6 +47,18 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        campoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoUsuarioActionPerformed(evt);
+            }
+        });
+
+        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoSenhaActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Nova senha de usuario");
 
         jLabel4.setText("Novo login ");
@@ -55,17 +69,16 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
-                    .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoUsuario)
                     .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(botaoCadastrarUsuario)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoCancelarUsuario))
-                        .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoCadastrarUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addComponent(botaoCancelarUsuario))
+                    .addComponent(campoSenha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,11 +91,11 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCadastrarUsuario)
                     .addComponent(botaoCancelarUsuario))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,22 +109,52 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // cadastrar usuario e senha
+               
+            String usuario = campoUsuario.getText();
+            String senha = campoSenha.getText();           
+           
+            int resposta =  JOptionPane.showConfirmDialog(null, "Deseja cadastrar com privilégios de administrador?" );           
+              
+            if (resposta == JOptionPane.YES_OPTION) {
+            
+                BufferedWriter escreverNoArquivo;
+            try {
+            escreverNoArquivo = new BufferedWriter(new FileWriter("c:/SGE/administrador.txt", true));
+            escreverNoArquivo.append(usuario + ";"+senha+"\n");
+            escreverNoArquivo.close();
+            } catch (IOException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
-        String usuario = campoUsuario.getText();
-        String senha = campoSenha.getText();
-
-        BufferedWriter escreverNoArquivo;
-        try {
+            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");                      
+            }
+            
+            if (resposta == JOptionPane.NO_OPTION) {
+                
+            BufferedWriter escreverNoArquivo;
+            try {
             escreverNoArquivo = new BufferedWriter(new FileWriter("c:/SGE/usuarios.txt", true));
             escreverNoArquivo.append(usuario + ";"+senha+"\n");
             escreverNoArquivo.close();
-        } catch (IOException ex) {
+            } catch (IOException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
         
-        JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
-
+            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
+            }
+        
+            if (resposta == JOptionPane.CANCEL_OPTION) {
+                
+            }                                                                               
     }                                                     
+
+    private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+    }                                            
+
+    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
 
 
     // Variables declaration - do not modify                     
