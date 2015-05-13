@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Mikhail
  */
-public class ComprasMateriaPrima extends javax.swing.JInternalFrame {
+public class Interface extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ComprasMateriaPrima
      */
-    public ComprasMateriaPrima() {
+    public Interface() {
         initComponents();
         
         carregaFornecedores();
@@ -66,9 +66,9 @@ public class ComprasMateriaPrima extends javax.swing.JInternalFrame {
             //tabela.getColumnModel().getColumn(2).setPreferredWidth(50);
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ComprasMateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(ComprasMateriaPrima.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

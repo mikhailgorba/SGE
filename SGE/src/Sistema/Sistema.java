@@ -270,7 +270,7 @@ public class Sistema {
 			}
 			
 			f = (a+b+c+d+e);
-			strRetorno += "o valor total da compra é de: = " + f;
+			strRetorno += "O valor total da compra é de: R$ " + f;
 			
 		}//fimIf
 
