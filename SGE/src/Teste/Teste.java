@@ -2,6 +2,9 @@ package Teste;
 
 import static org.junit.Assert.*;
 
+import java.text.NumberFormat;
+
+import javax.sound.sampled.spi.FormatConversionProvider;
 import javax.swing.JOptionPane;
 
 import org.junit.Test;
@@ -88,9 +91,20 @@ public class Teste {
 	
 		}
 		
+		
+		
 		}
 		
-	
+	@Test
+	public void formataçaoMoeda()	{
+		
+		
+		double numeroAserConvertido;
+		numeroAserConvertido = 300;
+		System.out.println(NumberFormat.getCurrencyInstance().format(numeroAserConvertido));
+
+        // imprimir com R$   
+	}
 		
 	}
 	
