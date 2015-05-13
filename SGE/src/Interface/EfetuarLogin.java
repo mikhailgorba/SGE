@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Interface;
 
 import java.io.BufferedReader;
@@ -35,6 +31,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         botaoAcessar = new javax.swing.JButton();
         botaoCancelar = new javax.swing.JButton();
+        radioAdministrador = new javax.swing.JRadioButton();
 
         setTitle("Efetuar Login");
         setLocationByPlatform(true);
@@ -57,22 +54,26 @@ public class EfetuarLogin extends javax.swing.JFrame {
             }
         });
 
+        radioAdministrador.setText("Logar como administrador");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(campoUsuario)
-                    .addComponent(campoSenha)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botaoAcessar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(botaoCancelar)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoCancelar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(campoUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(radioAdministrador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,22 +87,41 @@ public class EfetuarLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(radioAdministrador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoAcessar)
-                    .addComponent(botaoCancelar))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(botaoCancelar)
+                    .addComponent(botaoAcessar))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>                        
 
+    public String escolheNivel() {
+ 
+               if (radioAdministrador.isSelected()) {
+ 
+                    return "M";
+ 
+                } else {
+ 
+                return "F";
+               }
+    }
+    
+    
+    
     private void botaoAcessarActionPerformed(java.awt.event.ActionEvent evt) {                                             
 
         String usuario = campoUsuario.getText();
-        String senha = campoSenha.getText();
-
-        
-        if (consultaUsuario(usuario+";"+senha))
+        String senha = campoSenha.getText();        
+                
+        String escolha = escolheNivel();
+            if (escolha == "M") {
+                
+                
+              if (consultaUsuarioAdministrador(usuario+";"+senha))
         {
             this.setVisible(false);
             java.awt.EventQueue.invokeLater(new Runnable() {
@@ -113,7 +133,30 @@ public class EfetuarLogin extends javax.swing.JFrame {
             int MessageDialogERROR_MESSAGE = 0;
           JOptionPane.showMessageDialog(null, "Sua senha ou usuário são inválidos", "ACESSO NEGADO", MessageDialogERROR_MESSAGE);
             
-        }
+        }  
+                
+                
+                
+            }
+            else {
+            
+             if (consultaUsuario(usuario+";"+senha))
+        {
+            this.setVisible(false);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new TelaPrincipal().setVisible(true);
+                }
+            });
+        } else {
+            int MessageDialogERROR_MESSAGE = 0;
+          JOptionPane.showMessageDialog(null, "Sua senha ou usuário são inválidos", "ACESSO NEGADO", MessageDialogERROR_MESSAGE);
+            
+            }
+            
+            }
+            
+        
 
     }                                            
 
@@ -123,11 +166,37 @@ public class EfetuarLogin extends javax.swing.JFrame {
         
     }                                             
 
+    private boolean consultaUsuarioAdministrador(String usuarioSenha)
+    {
+        boolean logar = false;
+        try {
+            BufferedReader buffRead = new BufferedReader(new FileReader("c:/SGE/administrador.txt"));
+            String linha = buffRead.readLine();
+            while (true) {
+                if (linha != null) {
+                    if (linha.equals(usuarioSenha))
+                    {
+                        logar = true;
+                        break;
+                    }
+                } else {
+                    break;
+                }
+                linha = buffRead.readLine();
+            }
+            buffRead.close();
+        } catch (Exception e) {
+            return false;
+        }
+
+        return logar;
+    }
+    
     private boolean consultaUsuario(String usuarioSenha)
     {
         boolean logar = false;
         try {
-            BufferedReader buffRead = new BufferedReader(new FileReader("C:\\SGE/usuarios.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("c:/SGE/usuarios.txt"));
             String linha = buffRead.readLine();
             while (true) {
                 if (linha != null) {
@@ -156,6 +225,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton radioAdministrador;
     // End of variables declaration                   
 
 }
