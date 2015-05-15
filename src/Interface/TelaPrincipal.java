@@ -1,5 +1,9 @@
 package Interface;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -174,9 +178,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }                                          
 
     private void menuListaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        ListaUsuarios telaListaUsuarios = new ListaUsuarios();
-        jDesktopPane1.add(telaListaUsuarios);
-        telaListaUsuarios.setVisible(true);
+        try {
+            ListaUsuarios telaListaUsuarios = new ListaUsuarios();
+            jDesktopPane1.add(telaListaUsuarios);
+            telaListaUsuarios.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }                                                 
 
@@ -230,4 +238,3 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuListaUsuarios;
     // End of variables declaration                   
 }
-

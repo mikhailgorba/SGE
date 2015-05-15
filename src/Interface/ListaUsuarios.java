@@ -6,7 +6,12 @@
 package Interface;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,69 +31,130 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
             //
                // }}
     
+    public ListaUsuarios() throws IOException {
+		
+        initComponents();        
+        carregaUsuarios();
+        }
+	
+	   
+       
+
+	private void carregaUsuarios() throws IOException {
+	
+	//DefaultTableModel defaultModel = (DefaultTableModel) tabelaAdministradores.getModel();
+	
+		
+		  BufferedReader lerUsuarios;
+	        try {
+	            lerUsuarios = new BufferedReader(new FileReader("c:/SGE/administrador.txt"));
+	            String linha = lerUsuarios.readLine();            
+	                                
+	            while (true) {
+	                if (linha != null) {
+	                    
+	                    String[] array = linha.split(";");
+	                    DefaultTableModel defaultModel = (DefaultTableModel) tabelaUsuario.getModel();
+	            
+	                     Vector colunasArray = new Vector();
+	                     colunasArray.add(array[0]);
+	                     colunasArray.add(array[1]);
+
+	                     defaultModel.addRow(colunasArray); 
+	                    
+	                } else {
+	                    break;
+	                }
+	                linha = lerUsuarios.readLine();
+	            }
+	            lerUsuarios.close();
+	        } catch (FileNotFoundException ex) {
+	            Logger.getLogger(ListaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+	        } catch (IOException ex) {
+	            Logger.getLogger(ListaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	        
+	    }
+		
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaAdministradores = new javax.swing.JList();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaUsuario = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaUsuarios = new javax.swing.JTable();
 
         jLabel1.setText("jLabel1");
 
         setClosable(true);
         setTitle("Lista de Usuarios");
 
-        tabelaAdministradores.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "admin" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(tabelaAdministradores);
-
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "administrador" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
-
         jLabel2.setText("Administradores");
 
         jLabel3.setText("Usuarios Comuns");
+
+        tabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Senha"
+            }
+        ));
+        tabelaUsuario.setCellSelectionEnabled(false);
+        jScrollPane3.setViewportView(tabelaUsuario);
+
+        tabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Senha"
+            }
+        ));
+        jScrollPane4.setViewportView(tabelaUsuarios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(228, 228, 228)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(361, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(45, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(21, 21, 21)))
         );
 
         pack();
@@ -99,10 +165,9 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList jList2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList tabelaAdministradores;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tabelaUsuario;
+    private javax.swing.JTable tabelaUsuarios;
     // End of variables declaration                   
 }
-
