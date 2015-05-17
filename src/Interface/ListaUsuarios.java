@@ -35,6 +35,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 		
         initComponents();        
         carregaUsuarios();
+        carregaAdministradores();
         }
 	
 	   
@@ -45,10 +46,12 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 	//DefaultTableModel defaultModel = (DefaultTableModel) tabelaAdministradores.getModel();
 	
 		
-		  BufferedReader lerUsuarios;
-	        try {
-	            lerUsuarios = new BufferedReader(new FileReader("c:/SGE/administrador.txt"));
-	            String linha = lerUsuarios.readLine();            
+		//tabela administradores
+		
+		  BufferedReader lerAdministradores;
+	    
+	            lerAdministradores = new BufferedReader(new FileReader("c:/SGE/administrador.txt"));
+	            String linha = lerAdministradores.readLine();            
 	                                
 	            while (true) {
 	                if (linha != null) {
@@ -65,16 +68,52 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 	                } else {
 	                    break;
 	                }
-	                linha = lerUsuarios.readLine();
+	                linha = lerAdministradores.readLine();
 	            }
-	            lerUsuarios.close();
-	        } catch (FileNotFoundException ex) {
-	            Logger.getLogger(ListaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-	        } catch (IOException ex) {
-	            Logger.getLogger(ListaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-	        }
+	            lerAdministradores.close();
+	            
+	        
+	      
+
+			 
+	
 	        
 	    }
+	
+	
+	
+	private void carregaAdministradores() throws IOException {
+		
+		
+		//tabela usuarios
+        BufferedReader lerUsuarios;
+	       
+        lerUsuarios = new BufferedReader(new FileReader("c:/SGE/usuarios.txt"));
+        String linhas = lerUsuarios.readLine();            
+                            
+        while (true) {
+            if (linhas != null) {
+                
+                String[] array2 = linhas.split(";");
+                DefaultTableModel defaultModel = (DefaultTableModel) tabelaAdministrador.getModel();
+        
+                 Vector colunasArray = new Vector();
+                 colunasArray.add(array2[0]);
+                 colunasArray.add(array2[1]);
+
+                 defaultModel.addRow(colunasArray); 
+                
+            } else {
+                break;
+            }
+            linhas = lerUsuarios.readLine();
+        }
+        lerUsuarios.close();
+   
+    
+
+		
+	}
 		
     
     @SuppressWarnings("unchecked")
@@ -87,7 +126,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaUsuario = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tabelaUsuarios = new javax.swing.JTable();
+        tabelaAdministrador = new javax.swing.JTable();
 
         jLabel1.setText("jLabel1");
 
@@ -109,7 +148,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
         tabelaUsuario.setCellSelectionEnabled(false);
         jScrollPane3.setViewportView(tabelaUsuario);
 
-        tabelaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAdministrador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,7 +156,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
                 "Usuario", "Senha"
             }
         ));
-        jScrollPane4.setViewportView(tabelaUsuarios);
+        jScrollPane4.setViewportView(tabelaAdministrador);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +206,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tabelaAdministrador;
     private javax.swing.JTable tabelaUsuario;
-    private javax.swing.JTable tabelaUsuarios;
     // End of variables declaration                   
 }
