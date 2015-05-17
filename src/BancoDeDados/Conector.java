@@ -1,4 +1,6 @@
-public class conector {
+package BancoDeDados;
+
+public class Conector {
     public static Connection getConexao() throws SQLException, FileNotFoundException, IOException {
         String nomedb =null;
         try { 
