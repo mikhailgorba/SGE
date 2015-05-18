@@ -11,4 +11,6 @@ package Teste;
  */
 public class Teste222 {
     
+	public void Felps() {
+	}
 }
