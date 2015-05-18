@@ -38,7 +38,7 @@ public class ComprasMateriaPrima extends javax.swing.JInternalFrame {
         
         BufferedReader lerFornecedores;
         try {
-            lerFornecedores = new BufferedReader(new FileReader("c:/SGE/fornecedores.txt"));
+            lerFornecedores = new BufferedReader(new FileReader("C:/Users/Mikhail/git/SGE/Banco/fornecedores.txt"));
             String linha = lerFornecedores.readLine();            
                                 
             while (true) {
