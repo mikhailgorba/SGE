@@ -1,4 +1,7 @@
-public class conector {
+package BancoDeDados;
+
+public class Conector {
+
     public static Connection getConexao() throws SQLException, FileNotFoundException, IOException {
         String nomedb =null;
         try { 
@@ -34,3 +37,4 @@ catch (IOException e) {
     public static PreparedStatement PreparedStatement(String sql) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+}

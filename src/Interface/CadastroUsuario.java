@@ -116,7 +116,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             
                 BufferedWriter escreverNoArquivo;
             try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("c:/SGE/administrador.txt", true));
+            escreverNoArquivo = new BufferedWriter(new FileWriter("C:/Users/Mikhail/git/SGE/Banco/administrador.txt", true));
             escreverNoArquivo.append(usuario + ";"+senha+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {
@@ -130,7 +130,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 
             BufferedWriter escreverNoArquivo;
             try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("c:/SGE/usuarios.txt", true));
+            escreverNoArquivo = new BufferedWriter(new FileWriter("C:/Users/Mikhail/git/SGE/Banco/usuarios.txt", true));
             escreverNoArquivo.append(usuario + ";"+senha+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {

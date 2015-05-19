@@ -170,7 +170,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
     {
         boolean logar = false;
         try {
-            BufferedReader buffRead = new BufferedReader(new FileReader("c:/SGE/administrador.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("C:/Users/Mikhail/git/SGE/Banco/administrador.txt"));
             String linha = buffRead.readLine();
             while (true) {
                 if (linha != null) {
@@ -196,7 +196,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
     {
         boolean logar = false;
         try {
-            BufferedReader buffRead = new BufferedReader(new FileReader("c:/SGE/usuarios.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("C:/Users/Mikhail/git/SGE/Banco/usuarios.txt"));
             String linha = buffRead.readLine();
             while (true) {
                 if (linha != null) {

@@ -96,7 +96,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
             
                 BufferedWriter escreverNoArquivo;
             try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("c:/SGE/produtos.txt", true));
+            escreverNoArquivo = new BufferedWriter(new FileWriter("C:/Users/Mikhail/git/SGE/Banco/produtos.txt", true));
             escreverNoArquivo.append(produto + ";"+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {
