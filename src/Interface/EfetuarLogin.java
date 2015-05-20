@@ -196,7 +196,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
     {
         boolean logar = false;
         try {
-            BufferedReader buffRead = new BufferedReader(new FileReader("C:/SGE/usuarios.txt"));
+            BufferedReader buffRead = new BufferedReader(new FileReader("C:/Users/Mikhail/git/SGE1/BancoDeArquivos/usuarios.txt"));
             String linha = buffRead.readLine();
             while (true) {
                 if (linha != null) {
