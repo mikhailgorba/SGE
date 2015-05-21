@@ -10,7 +10,7 @@ public class teste2310 {
 	public void test() {
 		
 	
-		/* private <Calendar, Negocio> void sequenciaSimplesDeNegocios() {
+		 private <Calendar, Negocio> void sequenciaSimplesDeNegocios() {
 			    Calendar hoje = Calendar.getInstance();
 
 			    Negocio negocio1 = new Negocio(40.5, 100, hoje);
@@ -24,7 +24,7 @@ public class teste2310 {
 			    CandlestickFactory fabrica = new CandlestickFactory();
 			    Candlestick candle = fabrica.constroiCandleParaData(hoje, negocios);
 			  
-		*/
+		
 	}
 	}
-//}
+}

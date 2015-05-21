@@ -12,22 +12,23 @@ class EntradaDeDados {
           
       
       
-    public  String entradaDeDados(String local) throws IOException {  
-    	 
-    	
-    	
-        byte[] buffer = new byte[11];  
-        InputStream in;
-        
-        //String local = "C:/Users/Mikhail/git/SGE1/BancoDeArquivos/usuarios.txt";
-        
-         
-            in = new FileInputStream(local);  
+    public EntradaDeDados() {  
+  
+        byte[] buffer = new byte[1000];  
+        InputStream in;  
+        try {  
+            in = new FileInputStream("/SGE/BancoArquivos/usuarios");  
             in.read(buffer);  
-            String texto = new String(buffer).trim().toString();  
+            String temp = new String(buffer).trim().toString();  
             in.close();  
-       
-        return texto;
+        } catch (FileNotFoundException e) {  
+            System.out.println(e);  
+        }  
+        catch (IOException e) {  
+            System.out.println(e);  
+        }  
+      
+  
     }  
           
       
