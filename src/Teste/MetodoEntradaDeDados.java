@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.Arrays;  
 import java.util.List;  
   
-class EntradaDeDados {  
+class MetodoEntradaDeDados {  
       
           
       
@@ -19,7 +19,7 @@ class EntradaDeDados {
         byte[] buffer = new byte[11];  
         InputStream in;
         
-        //String local = "C:/Users/Mikhail/git/SGE1/BancoDeArquivos/usuarios.txt";
+        //String local = "BancoDeArquivos/usuarios.txt";
         
          
             in = new FileInputStream(local);  

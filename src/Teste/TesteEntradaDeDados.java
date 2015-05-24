@@ -13,7 +13,7 @@ import Interface.ComprasMateriaPrima;
 import Objetos.Fornecedor;
 import Sistema.Sistema;
 
-public class Teste222 {
+public class TesteEntradaDeDados {
 
 	 @Test
 	public void test() throws IOException {
@@ -22,12 +22,12 @@ public class Teste222 {
 		
 		//Executo um procedimento neste cenario
 		Sistema cp = new Sistema();
-		String local = "C:/Users/Mikhail/git/SGE1/BancoDeArquivos/usuarios.txt";
-		EntradaDeDados chamando = new EntradaDeDados();
+		String local = "BancoDeArquivos/usuarios.txt";
+		MetodoEntradaDeDados chamando = new MetodoEntradaDeDados();
 	    String resultado = chamando.entradaDeDados(local);
 		
 		//verifico se a saida é a esperada
-		assertEquals("admin;admin", resultado);
+		assertEquals("admisn;admin", resultado);
 	}
 	
 }

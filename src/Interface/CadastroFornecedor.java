@@ -216,7 +216,7 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         BufferedWriter escreverNoArquivo;
         try {
             String reais = "R$";
-            escreverNoArquivo = new BufferedWriter(new FileWriter("c:/SGE/fornecedores.txt", true));
+            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/fornecedores.txt", true));
             escreverNoArquivo.append(nomeFornecedor + ";"+ reais+frete+ ",00;" + reais+precoAluminio +",00;"+ reais+precoParafuso +",00;"+ reais+precoCabo+",00;"+ reais+precoBorracha+",00;"+ reais+precoPlastico+",00\n");
             escreverNoArquivo.close();
         } catch (IOException ex) {
