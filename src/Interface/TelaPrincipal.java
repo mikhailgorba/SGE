@@ -167,7 +167,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null, "Não");
         }
         
-        
+        dispose();
         
     }                                          
 
