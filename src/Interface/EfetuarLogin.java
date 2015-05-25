@@ -4,7 +4,6 @@ package Interface;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Reader;
-
 import javax.swing.JOptionPane;
 
 
@@ -99,15 +98,15 @@ public class EfetuarLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    public boolean escolheNivel(boolean b) {
+    public static String escolheNivel() {
  
                if (radioAdministrador.isSelected()) {
             	
-                    return true;
+                    return "M";
  
                 } else {
  
-                return false;
+                return "F";
                }
     }
     
@@ -116,11 +115,10 @@ public class EfetuarLogin extends javax.swing.JFrame {
     private void botaoAcessarActionPerformed(java.awt.event.ActionEvent evt) {                                             
 
         String usuario = campoUsuario.getText();
-        String senha = campoSenha.getText();
-        boolean b =false;
+        String senha = campoSenha.getText();        
                 
-        boolean escolha = escolheNivel(b);
-            if (escolha == true) {
+        String escolha = escolheNivel();
+            if (escolha == "M") {
                 
                 
               if (consultaUsuarioAdministrador(usuario+";"+senha))
