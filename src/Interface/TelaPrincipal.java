@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
+import Sistema.Sistema;
+
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -148,10 +152,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         
-       // if (Interface.EfetuarLogin.escolheNivel("Selecionado") {}
-        CadastroUsuario telaCadastroUuario = new CadastroUsuario();
-        jDesktopPane1.add(telaCadastroUuario);
-        telaCadastroUuario.setVisible(true);
+    	boolean escolha = true;
+    	
+    	EfetuarLogin chamando = new EfetuarLogin();
+		boolean resultado = chamando.escolheNivel(escolha);	 
+    	
+        	if (resultado == true) {
+        	 CadastroUsuario telaCadastroUuario = new CadastroUsuario();
+             jDesktopPane1.add(telaCadastroUuario);
+             telaCadastroUuario.setVisible(true);	
+        } 
+        	else {
+        	
+        	JOptionPane.showMessageDialog(null, "Não");
+        }
+        
         
         
     }                                          
