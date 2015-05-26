@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
-
-import Sistema.Sistema;
-
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -30,14 +26,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuListaUsuarios = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        menuPrincipalSair = new javax.swing.JMenuItem();
+        menuPrincipalTrocarUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE GESTÃO EMPRESARIAL (SGE)");
@@ -66,6 +65,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenuBar1.setName(""); // NOI18N
+
+        jMenu2.setText("Compras");
+
+        jMenuItem4.setText("Materia-prima");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Listar");
+
+        menuListaUsuarios.setText("Usuarios");
+        menuListaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListaUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuListaUsuarios);
+
+        jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Cadastrar");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,29 +123,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Compras");
+        jMenu4.setText("Principal");
 
-        jMenuItem4.setText("Materia-prima");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuPrincipalSair.setText("Sair");
+        menuPrincipalSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuPrincipalSairActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu4.add(menuPrincipalSair);
 
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Listar");
-
-        menuListaUsuarios.setText("Usuarios");
-        menuListaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        menuPrincipalTrocarUsuario.setText("Trocar Usuário");
+        menuPrincipalTrocarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuListaUsuariosActionPerformed(evt);
+                menuPrincipalTrocarUsuarioActionPerformed(evt);
             }
         });
-        jMenu3.add(menuListaUsuarios);
+        jMenu4.add(menuPrincipalTrocarUsuario);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -152,22 +171,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         
-    	boolean escolha = true;
-    	
-    	EfetuarLogin chamando = new EfetuarLogin();
-		boolean resultado = chamando.escolheNivel(escolha);	 
-    	
-        	if (resultado == true) {
-        	 CadastroUsuario telaCadastroUuario = new CadastroUsuario();
-             jDesktopPane1.add(telaCadastroUuario);
-             telaCadastroUuario.setVisible(true);	
-        } 
-        	else {
-        	
-        	JOptionPane.showMessageDialog(null, "Não");
-        }
+       // if (Interface.EfetuarLogin.escolheNivel("Selecionado") {}
+        CadastroUsuario telaCadastroUuario = new CadastroUsuario();
+        jDesktopPane1.add(telaCadastroUuario);
+        telaCadastroUuario.setVisible(true);
         
-        dispose();
         
     }                                          
 
@@ -202,6 +210,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         
     }                                                 
+
+    private void menuPrincipalSairActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    private void menuPrincipalTrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+        // TODO add your handling code here:
+    }                                                          
 
     /**
      * @param args the command line arguments
@@ -245,11 +261,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem menuListaUsuarios;
+    private javax.swing.JMenuItem menuPrincipalSair;
+    private javax.swing.JMenuItem menuPrincipalTrocarUsuario;
     // End of variables declaration                   
 }
