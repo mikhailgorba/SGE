@@ -1,4 +1,3 @@
-
 package Interface;
 
 import java.io.BufferedWriter;
@@ -75,14 +74,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Mostrar senha");
 
-			BufferedWriter escreverNoArquivo;
-			try {
-				escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/usuarios.txt", true));
-				escreverNoArquivo.append(usuario + ";" + senhaCriptografada + "\n");
-				escreverNoArquivo.close();
-			} catch (IOException ex) {
-				Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-			}
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,8 +138,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         
     }                                                    
 
-		}
-	}
     private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         // cadastrar usuario e senha
                
@@ -194,7 +183,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }                                            
 
-	
     private void radioMostrarSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         
         
@@ -218,14 +206,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                }
     }
 
-	// Variables declaration - do not modify
-	private javax.swing.JButton botaoCadastrarUsuario;
-	private javax.swing.JButton botaoCancelarUsuario;
-	private javax.swing.JPasswordField campoSenha;
-	private javax.swing.JTextField campoUsuario;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JLabel jLabel4;
-	// End of variables declaration
     // Variables declaration - do not modify                     
     private javax.swing.JButton botaoCadastrarUsuario;
     private javax.swing.JButton botaoCancelarUsuario;
