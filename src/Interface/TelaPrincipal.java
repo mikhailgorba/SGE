@@ -1,5 +1,6 @@
 package Interface;
 
+import java.awt.Component;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,7 +137,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuPrincipalTrocarUsuario.setText("Trocar Usuário");
         menuPrincipalTrocarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPrincipalTrocarUsuarioActionPerformed(evt);
+                try {
+					menuPrincipalTrocarUsuarioActionPerformed(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         jMenu4.add(menuPrincipalTrocarUsuario);
@@ -215,8 +221,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         dispose();
     }                                                 
 
-    private void menuPrincipalTrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                           
-        // TODO add your handling code here:
+    private void menuPrincipalTrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) throws IOException {                                                           
+        dispose();
+        EfetuarLogin chamar =  new EfetuarLogin(); 
+        chamar.setVisible(true);
+        
     }                                                          
 
     /**
