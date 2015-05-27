@@ -72,7 +72,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem4.setText("Materia-prima");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuComprarMateriaPrima(evt);
             }
         });
         jMenu2.add(jMenuItem4);
@@ -101,7 +101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("Usuario");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuCadastrarUsuario(evt);
             }
         });
         jMenu1.add(jMenuItem1);
@@ -109,7 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2.setText("Fornecedor");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuCadastrarFornecedor(evt);
             }
         });
         jMenu1.add(jMenuItem2);
@@ -117,7 +117,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem3.setText("Produto");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                menuCadastrarProduto(evt);
             }
         });
         jMenu1.add(jMenuItem3);
@@ -165,7 +165,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setBounds(0, 0, 1285, 686);
     }// </editor-fold>                        
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void menuCadastrarFornecedor(java.awt.event.ActionEvent evt) {                                           
     
         CadastroFornecedor telaCadastroFornecedor = new CadastroFornecedor();
         jDesktopPane1.add(telaCadastroFornecedor);
@@ -175,7 +175,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }                                          
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void menuCadastrarUsuario(java.awt.event.ActionEvent evt) {                                           
         
        // if (Interface.EfetuarLogin.escolheNivel("Selecionado") {}
         CadastroUsuario telaCadastroUuario = new CadastroUsuario();
@@ -190,7 +190,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }                                      
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void menuCadastrarProduto(java.awt.event.ActionEvent evt) {                                           
         
         CadastroProduto telaCadastroProduto = new CadastroProduto();
         jDesktopPane1.add(telaCadastroProduto);
@@ -199,7 +199,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        
     }                                          
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void menuComprarMateriaPrima(java.awt.event.ActionEvent evt) {                                           
         ComprasMateriaPrima telaComprasMateriaPrima = new ComprasMateriaPrima();
         jDesktopPane1.add(telaComprasMateriaPrima);
         telaComprasMateriaPrima.setVisible(true);
