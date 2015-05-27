@@ -61,7 +61,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 	            
 	                     Vector colunasArray = new Vector();
 	                     colunasArray.add(array[0]);
-	                     colunasArray.add(array[1]);
+	                    // colunasArray.add(array[1]);
 
 	                     defaultModel.addRow(colunasArray); 
 	                    
