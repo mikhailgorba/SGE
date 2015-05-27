@@ -190,18 +190,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menuCadastrarUsuario(java.awt.event.ActionEvent evt) {                                           
         
     	EfetuarLogin chamar = new EfetuarLogin();
-    	chamar.escolheNivel();
-    	String escolha = chamar.escolheNivel();
     	
-    	if (escolha == "M"){
+    	if (chamar.isAdmin == true){
         
-        CadastroUsuario telaCadastroUuario = new CadastroUsuario();
-        jDesktopPane1.add(telaCadastroUuario);
-        telaCadastroUuario.setVisible(true);
+    		CadastroUsuario telaCadastroUuario = new CadastroUsuario();
+    		jDesktopPane1.add(telaCadastroUuario);
+    		telaCadastroUuario.setVisible(true);
+        
     	}
     	else {
     		
-    		JOptionPane.showMessageDialog(null, escolha);
+    		JOptionPane.showMessageDialog(null, "Apenas Administrador pode cadastrar um usuario");
     	}
     	
     }                                       
