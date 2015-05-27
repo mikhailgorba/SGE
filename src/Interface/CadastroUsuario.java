@@ -155,7 +155,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             
                 BufferedWriter escreverNoArquivo;
             try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administrador.txt", true));
+            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administradores.txt", true));
             escreverNoArquivo.append(usuario + ";"+senha+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {
