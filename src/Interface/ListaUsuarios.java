@@ -50,7 +50,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 		
 		  BufferedReader lerAdministradores;
 	    
-	            lerAdministradores = new BufferedReader(new FileReader("C:/SGE/administrador.txt"));
+	            lerAdministradores = new BufferedReader(new FileReader("BancoDeArquivos/administradores.txt"));
 	            String linha = lerAdministradores.readLine();            
 	                                
 	            while (true) {
@@ -71,12 +71,6 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 	                linha = lerAdministradores.readLine();
 	            }
 	            lerAdministradores.close();
-	            
-	        
-	      
-
-			 
-	
 	        
 	    }
 	
@@ -88,7 +82,7 @@ public class ListaUsuarios extends javax.swing.JInternalFrame {
 		//tabela usuarios
         BufferedReader lerUsuarios;
 	       
-        lerUsuarios = new BufferedReader(new FileReader("C:/SGE/usuarios.txt"));
+        lerUsuarios = new BufferedReader(new FileReader("BancoDeArquivos/usuarios.txt"));
         String linhas = lerUsuarios.readLine();            
                             
         while (true) {

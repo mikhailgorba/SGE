@@ -63,7 +63,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
         campoSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoSenhaActionPerformed(evt);
+                
             }
         });
 
@@ -202,12 +202,8 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         
     }                                          
 
-    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        String escolha = mostrarCaracter();
-            if (escolha == "Selecionado") {
-                JOptionPane.showMessageDialog(null, "selecionado");
-            }
-    }                                          
+                                              
+                 
 
      public String mostrarCaracter() {
  

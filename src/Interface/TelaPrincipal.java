@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -84,7 +86,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuListaUsuarios.setText("Usuarios");
         menuListaUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuListaUsuariosActionPerformed(evt);
+                try {
+					try {
+						menuListaUsuariosActionPerformed(evt);
+					} catch (Throwable e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         jMenu3.add(menuListaUsuarios);
@@ -177,13 +189,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void menuCadastrarUsuario(java.awt.event.ActionEvent evt) {                                           
         
-       // if (Interface.EfetuarLogin.escolheNivel("Selecionado") {}
+    	EfetuarLogin chamar = new EfetuarLogin();
+    	chamar.escolheNivel();
+    	String escolha = chamar.escolheNivel();
+    	
+    	if (escolha == "M"){
+        
         CadastroUsuario telaCadastroUuario = new CadastroUsuario();
         jDesktopPane1.add(telaCadastroUuario);
         telaCadastroUuario.setVisible(true);
+    	}
+    	else {
+    		
+    		JOptionPane.showMessageDialog(null, escolha);
+    	}
+    	
+    }                                       
         
-        
-    }                                          
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {                                       
       
@@ -206,7 +228,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }                                          
 
-    private void menuListaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void menuListaUsuariosActionPerformed(java.awt.event.ActionEvent evt) throws Throwable {                                                  
         try {
             ListaUsuarios telaListaUsuarios = new ListaUsuarios();
             jDesktopPane1.add(telaListaUsuarios);

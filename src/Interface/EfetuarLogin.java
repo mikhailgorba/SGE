@@ -13,7 +13,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
      * Creates new form EfetuarLogin
      */
     public EfetuarLogin() {
-        initiComponents();
+        initComponents();
     }
 
     /**
@@ -23,7 +23,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    public void initiComponents() {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
