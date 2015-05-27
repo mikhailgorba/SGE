@@ -4,8 +4,11 @@ package Interface;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 
@@ -40,7 +43,15 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         botaoCadastrarUsuario.setText("Cadastrar");
         botaoCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCadastrarUsuarioActionPerformed(evt);
+                try {
+					botaoCadastrarUsuarioActionPerformed(evt);
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -143,12 +154,14 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         
     }                                                    
 
-    private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+    private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchAlgorithmException, UnsupportedEncodingException {                                                      
         // cadastrar usuario e senha
                
             String usuario = campoUsuario.getText();
             String senha = campoSenha.getText();           
-           
+            Sistema.Criptografia chama = new Sistema.Criptografia();
+            String senhaa = chama.criptografar(senha);
+            
             int resposta =  JOptionPane.showConfirmDialog(null, "Deseja cadastrar com privilégios de administrador?" );           
               
             if (resposta == JOptionPane.YES_OPTION) {
@@ -156,7 +169,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 BufferedWriter escreverNoArquivo;
             try {
             escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administradores.txt", true));
-            escreverNoArquivo.append(usuario + ";"+senha+"\n");
+            escreverNoArquivo.append(usuario + ";"+senhaa+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -170,7 +183,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             BufferedWriter escreverNoArquivo;
             try {
             escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/usuarios.txt", true));
-            escreverNoArquivo.append(usuario + ";"+senha+"\n");
+            escreverNoArquivo.append(usuario + ";"+senhaa+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
