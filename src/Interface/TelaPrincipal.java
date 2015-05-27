@@ -212,7 +212,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }                                                 
 
     private void menuPrincipalSairActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
+        dispose();
     }                                                 
 
     private void menuPrincipalTrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                           

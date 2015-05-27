@@ -1,3 +1,4 @@
+
 package Interface;
 
 import java.io.BufferedWriter;
@@ -27,8 +28,9 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         campoSenha = new javax.swing.JPasswordField();
         radioMostrarSenha = new javax.swing.JRadioButton();
-        campoMostrarSenha = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        areaMostrarSenha = new javax.swing.JTextArea();
 
         setClosable(true);
         setMaximizable(true);
@@ -74,6 +76,10 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Mostrar senha");
 
+        areaMostrarSenha.setColumns(20);
+        areaMostrarSenha.setRows(1);
+        jScrollPane2.setViewportView(areaMostrarSenha);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,28 +88,27 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(radioMostrarSenha)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(radioMostrarSenha))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoMostrarSenha, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4)
-                                    .addComponent(campoUsuario)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(botaoCadastrarUsuario)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                                        .addComponent(botaoCancelarUsuario)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(campoSenha))))
-                .addContainerGap())
+                        .addComponent(jLabel1)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
+                            .addComponent(campoUsuario)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botaoCadastrarUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                .addComponent(botaoCancelarUsuario)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(campoSenha)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,11 +123,11 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(campoMostrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(radioMostrarSenha)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCadastrarUsuario)
                     .addComponent(botaoCancelarUsuario))
@@ -150,7 +155,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             
                 BufferedWriter escreverNoArquivo;
             try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administradores.txt", true));
+            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administrador.txt", true));
             escreverNoArquivo.append(usuario + ";"+senha+"\n");
             escreverNoArquivo.close();
             } catch (IOException ex) {
@@ -185,8 +190,17 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     private void radioMostrarSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         
+    	String senha = campoSenha.getText();
+    	
+    	if (radioMostrarSenha.isSelected()) {
+    		
+    		areaMostrarSenha.setText(senha);
+    	}
+    	else {
+    		areaMostrarSenha.setText(null);
+    	}
         
-    }                                                 
+    }                                          
 
     private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         String escolha = mostrarCaracter();
@@ -207,14 +221,15 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify                     
+    private javax.swing.JTextArea areaMostrarSenha;
     private javax.swing.JButton botaoCadastrarUsuario;
     private javax.swing.JButton botaoCancelarUsuario;
-    private javax.swing.JTextField campoMostrarSenha;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton radioMostrarSenha;
     // End of variables declaration                   
 }
