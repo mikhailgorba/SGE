@@ -4,7 +4,6 @@ package Interface;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,8 +31,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         campoSenha = new javax.swing.JPasswordField();
         radioMostrarSenha = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        areaMostrarSenha = new javax.swing.JTextArea();
+        campoConfirmarSenha = new javax.swing.JPasswordField();
 
         setClosable(true);
         setMaximizable(true);
@@ -46,9 +44,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 try {
 					botaoCadastrarUsuarioActionPerformed(evt);
 				} catch (NoSuchAlgorithmException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -74,7 +69,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
         campoSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                campoSenhaActionPerformed(evt);
             }
         });
 
@@ -85,11 +80,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Mostrar senha");
-
-        areaMostrarSenha.setColumns(20);
-        areaMostrarSenha.setRows(1);
-        jScrollPane2.setViewportView(areaMostrarSenha);
+        jLabel1.setText("Confirmar senha");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +98,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoSenha)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
@@ -115,10 +107,9 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botaoCadastrarUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                                .addComponent(botaoCancelarUsuario)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(campoSenha)
-                    .addComponent(jScrollPane2))
+                                .addComponent(botaoCancelarUsuario))
+                            .addComponent(campoConfirmarSenha))
+                        .addGap(0, 1, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -134,11 +125,11 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(28, 28, 28)
+                .addComponent(campoConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(radioMostrarSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoCadastrarUsuario)
                     .addComponent(botaoCancelarUsuario))
@@ -154,47 +145,61 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         
     }                                                    
 
-    private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchAlgorithmException, UnsupportedEncodingException {                                                      
+    private void botaoCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchAlgorithmException {                                                      
         // cadastrar usuario e senha
                
             String usuario = campoUsuario.getText();
-            String senha = campoSenha.getText();           
+            String senha = campoSenha.getText(); 
+            String confirmarSenha = campoConfirmarSenha.getText();
+            
             Sistema.EncriptaSenha chama = new Sistema.EncriptaSenha();
             String senhaa = chama.encripta(senha);
             
-            int resposta =  JOptionPane.showConfirmDialog(null, "Deseja cadastrar com privilégios de administrador?" );           
-              
-            if (resposta == JOptionPane.YES_OPTION) {
             
+            if (senha.equals(confirmarSenha)) { 
+            	
+            	
+            	int resposta =  JOptionPane.showConfirmDialog(null, "Deseja cadastrar com privilégios de administrador?" );           
+                
+                if (resposta == JOptionPane.YES_OPTION) {
+                
+                    BufferedWriter escreverNoArquivo;
+                try {
+                escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administrador.txt", true));
+                escreverNoArquivo.append(usuario + ";"+senha+"\n");
+                escreverNoArquivo.close();
+                } catch (IOException ex) {
+                Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");                      
+                }
+                
+                if (resposta == JOptionPane.NO_OPTION) {
+                    
                 BufferedWriter escreverNoArquivo;
-            try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/administradores.txt", true));
-            escreverNoArquivo.append(usuario + ";"+senhaa+"\n");
-            escreverNoArquivo.close();
-            } catch (IOException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");                      
+                try {
+                escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/usuarios.txt", true));
+                escreverNoArquivo.append(usuario + ";"+senha+"\n");
+                escreverNoArquivo.close();
+                } catch (IOException ex) {
+                Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
+                }
+            
+                if (resposta == JOptionPane.CANCEL_OPTION) {
+                    
+                }                              
+            	
+            	
             }
             
-            if (resposta == JOptionPane.NO_OPTION) {
-                
-            BufferedWriter escreverNoArquivo;
-            try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/usuarios.txt", true));
-            escreverNoArquivo.append(usuario + ";"+senhaa+"\n");
-            escreverNoArquivo.close();
-            } catch (IOException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
-            }
-        
-            if (resposta == JOptionPane.CANCEL_OPTION) {
-                
-            }                                                                               
+            else { JOptionPane.showMessageDialog(null, "senhas diferentes");}
+            
+            
+                                                             
     }                                                     
 
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                             
@@ -203,20 +208,15 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     private void radioMostrarSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         
-    	String senha = campoSenha.getText();
-    	
-    	if (radioMostrarSenha.isSelected()) {
-    		
-    		areaMostrarSenha.setText(senha);
-    	}
-    	else {
-    		areaMostrarSenha.setText(null);
-    	}
         
-    }                                          
+    }                                                 
 
-                                              
-                 
+    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        String escolha = mostrarCaracter();
+            if (escolha == "Selecionado") {
+                JOptionPane.showMessageDialog(null, "selecionado");
+            }
+    }                                          
 
      public String mostrarCaracter() {
  
@@ -230,15 +230,14 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JTextArea areaMostrarSenha;
     private javax.swing.JButton botaoCadastrarUsuario;
     private javax.swing.JButton botaoCancelarUsuario;
+    private javax.swing.JPasswordField campoConfirmarSenha;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton radioMostrarSenha;
     // End of variables declaration                   
 }
