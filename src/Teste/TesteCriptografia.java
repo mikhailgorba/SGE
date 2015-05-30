@@ -1,3 +1,4 @@
+package Teste;
 import static org.junit.Assert.*;
 
 import java.io.UnsupportedEncodingException;
@@ -6,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Test;
 
 import Sistema.Criptografia;
+import Sistema.EncriptaSenha;
 
 
 public class TesteCriptografia {
@@ -15,10 +17,10 @@ public class TesteCriptografia {
 		String senha = "teste";
 		String cod1, cod2;
 		
-		Criptografia cript = new Criptografia();
+		EncriptaSenha cript = new EncriptaSenha();
 		
-		cod1 = cript.criptografar(senha);
-		cod2 = cript.criptografar(senha);
+		cod1 = cript.encripta(senha);
+		cod2 = cript.encripta(senha);
 		
 		assertEquals(cod1,cod2);
 		

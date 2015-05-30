@@ -159,8 +159,8 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                
             String usuario = campoUsuario.getText();
             String senha = campoSenha.getText();           
-            Sistema.Criptografia chama = new Sistema.Criptografia();
-            String senhaa = chama.criptografar(senha);
+            Sistema.EncriptaSenha chama = new Sistema.EncriptaSenha();
+            String senhaa = chama.encripta(senha);
             
             int resposta =  JOptionPane.showConfirmDialog(null, "Deseja cadastrar com privilégios de administrador?" );           
               

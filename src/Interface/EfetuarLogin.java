@@ -152,8 +152,8 @@ public class EfetuarLogin extends javax.swing.JFrame {
 
 		String usuario = campoUsuario.getText();
 		String senha = campoSenha.getText();
-		// Sistema.Criptografia chama = new Sistema.Criptografia();
-         //String senhaa = chama.criptografar(senha);
+		 Sistema.EncriptaSenha chama = new Sistema.EncriptaSenha();
+         String senhaa = chama.encripta(senha);
 				
 		isAdmin = false;
 		String escolha = escolheNivel();
