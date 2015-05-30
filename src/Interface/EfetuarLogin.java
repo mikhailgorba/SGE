@@ -153,13 +153,13 @@ public class EfetuarLogin extends javax.swing.JFrame {
 		String usuario = campoUsuario.getText();
 		String senha = campoSenha.getText();
 		 Sistema.EncriptaSenha chama = new Sistema.EncriptaSenha();
-         String senhaa = chama.encripta(senha);
+         String senhaCriptografada = chama.encripta(senha);
 				
 		isAdmin = false;
 		String escolha = escolheNivel();
 		if (escolha == "M") {
 
-			if (consultaUsuarioAdministrador(usuario + ";" + senha)) {
+			if (consultaUsuarioAdministrador(usuario + ";" + senhaCriptografada)) {
 				this.setVisible(false);
 				isAdmin = true;
 				java.awt.EventQueue.invokeLater(new Runnable() {
@@ -175,7 +175,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
 			}
 		} else {
 
-			if (consultaUsuario(usuario + ";" + senha)) {
+			if (consultaUsuario(usuario + ";" + senhaCriptografada)) {
 				this.setVisible(false);
 				java.awt.EventQueue.invokeLater(new Runnable() {
 					public void run() {
