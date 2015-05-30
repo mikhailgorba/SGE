@@ -7,9 +7,9 @@ import java.security.NoSuchAlgorithmException;
 public class EncriptaSenha {     
   
      public static String encripta (String senha) throws NoSuchAlgorithmException {     
-    	 String s = "senha aqui";
+    	// String senha = "senha aqui";
     	 MessageDigest md = MessageDigest.getInstance("SHA-1");
-    	 md.update( s.getBytes() );
+    	 md.update( senha.getBytes() );
     	 byte[] hash = md.digest();
     	 StringBuffer hexString = new StringBuffer();
     	 for (int i = 0; i < hash.length; i++) {
