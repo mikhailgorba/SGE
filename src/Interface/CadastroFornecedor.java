@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import javax.xml.bind.DatatypeConverter;
+
+import Objetos.Produtos;
 
 /**
  *
@@ -97,13 +100,15 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         
         //listar produtos
         
+        String s = new Produtos().getNome();
+        
+        listarProdutos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { s }));
         
         
-       // listarProdutos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 4" }));
         
         
-        
-        listarProdutos.setModel(new javax.swing.DefaultComboBoxModel<produtos>());
+        		
+        		
         
         
         // fim listar produtos
@@ -177,6 +182,12 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         setBounds(0, 0, 825, 452);
     }// </editor-fold>                        
 
+    
+    
+    
+    
+    
+    
     private void campoNomeFornecedorActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         // TODO add your handling code here:
     }                                                   
