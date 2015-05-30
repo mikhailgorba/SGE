@@ -45,7 +45,7 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaProdutos = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox();
+        listarProdutos = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -93,7 +93,20 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(tabelaProdutos);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        
+        //listar produtos
+        
+        
+        
+       // listarProdutos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 4" }));
+        
+        
+        
+        listarProdutos.setModel(new javax.swing.DefaultComboBoxModel<produtos>());
+        
+        
+        // fim listar produtos
 
         jLabel2.setText("Escolha o produto");
 
@@ -121,7 +134,7 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(listarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -150,7 +163,7 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
                             .addComponent(campoNomeFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoFrete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(listarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(194, 194, 194)
@@ -208,7 +221,7 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoFrete;
     private javax.swing.JTextField campoNomeFornecedor;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox listarProdutos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
