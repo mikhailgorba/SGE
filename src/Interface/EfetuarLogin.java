@@ -3,6 +3,9 @@ package Interface;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.swing.JOptionPane;
 
 public class EfetuarLogin extends javax.swing.JFrame {
@@ -42,7 +45,15 @@ public class EfetuarLogin extends javax.swing.JFrame {
 		botaoAcessar.setText("Acessar");
 		botaoAcessar.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				botaoAcessarActionPerformed(evt);
+				try {
+					botaoAcessarActionPerformed(evt);
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -137,15 +148,18 @@ public class EfetuarLogin extends javax.swing.JFrame {
 		}
 	}
 
-	private void botaoAcessarActionPerformed(java.awt.event.ActionEvent evt) {
+	private void botaoAcessarActionPerformed(java.awt.event.ActionEvent evt) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
 		String usuario = campoUsuario.getText();
 		String senha = campoSenha.getText();
+		 Sistema.EncriptaSenha chama = new Sistema.EncriptaSenha();
+         String senhaCriptografada = chama.encripta(senha);
+				
 		isAdmin = false;
 		String escolha = escolheNivel();
 		if (escolha == "M") {
 
-			if (consultaUsuarioAdministrador(usuario + ";" + senha)) {
+			if (consultaUsuarioAdministrador(usuario + ";" + senhaCriptografada)) {
 				this.setVisible(false);
 				isAdmin = true;
 				java.awt.EventQueue.invokeLater(new Runnable() {
@@ -161,7 +175,7 @@ public class EfetuarLogin extends javax.swing.JFrame {
 			}
 		} else {
 
-			if (consultaUsuario(usuario + ";" + senha)) {
+			if (consultaUsuario(usuario + ";" + senhaCriptografada)) {
 				this.setVisible(false);
 				java.awt.EventQueue.invokeLater(new Runnable() {
 					public void run() {

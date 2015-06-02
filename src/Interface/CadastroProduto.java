@@ -52,7 +52,12 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancelar");
-
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,8 +113,8 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                                    
     {  
     }                                        
-
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) { dispose();
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JTextField campoProduto;
     private javax.swing.JButton jButton1;

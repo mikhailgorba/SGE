@@ -8,12 +8,11 @@ public class Criptografia {
 
 	public static String criptografar(String args) throws NoSuchAlgorithmException, UnsupportedEncodingException
 			 {
-		String senha = "admin";
 		String senhaC;
 		MessageDigest algorithm = MessageDigest.getInstance("MD5");
-		byte senhaCriptografada[] = algorithm.digest(senha.getBytes("UTF-8"));
-		System.out.println(senhaCriptografada);
+		byte senhaCriptografada[] = algorithm.digest(args.getBytes("UTF-8"));
 		senhaC = senhaCriptografada.toString();
+		System.out.println(senhaC);
 		return senhaC;
 
 	}
