@@ -57,7 +57,11 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> branch 'master' of https://github.com/mikhailgorba/SGE
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,8 +124,8 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
        dispose();
     }                                        
-
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) { dispose();
+    }
     // Variables declaration - do not modify                     
     private javax.swing.JTextField campoProduto;
     private javax.swing.JButton jButton1;

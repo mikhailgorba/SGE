@@ -3,6 +3,10 @@ ab;ab
 asd;asd
 c;admin
 vai;[B@1321105
+<<<<<<< HEAD
+Nielson;Nielson
+NielsonTeixeira;[B@151c7f3
+=======
 vai;[B@8c8bae
 Mikhail;[B@f7e8f2
 aba;[B@1d768c9
@@ -11,3 +15,4 @@ casa;f53bc5dd0dbc6bc7ac734b72f38739e93398cbf8
 admin;f53bc5dd0dbc6bc7ac734b72f38739e93398cbf8
 casa;81bce1f3bf343c464685d875c626820cdb58e309
 lar;21a871b1445eb8af6efcf9880fdbd419de0d0007
+>>>>>>> branch 'master' of https://github.com/mikhailgorba/SGE.git

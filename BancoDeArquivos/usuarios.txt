@@ -1,4 +1,8 @@
 admin;admin
 a;a
 lol;lol
+<<<<<<< HEAD
+exemplo;[B@10c348c
+=======
 fantastico;[B@6d03aa
+>>>>>>> branch 'master' of https://github.com/mikhailgorba/SGE.git
