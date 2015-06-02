@@ -3,7 +3,7 @@ package Objetos;
 public class Produtos {
 
 	
-	private String nome = "ss";
+	private String  nome = "Aluminio";
 
 	public String getNome() {
 		return nome;

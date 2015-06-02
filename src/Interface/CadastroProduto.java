@@ -52,6 +52,11 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,25 +93,32 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+                                          
              
-            String produto = campoProduto.getText();           
-           
-   
+    	 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+             
+             String produto = campoProduto.getText();           
             
-                BufferedWriter escreverNoArquivo;
-            try {
-            escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/produtos.txt", true));
-            escreverNoArquivo.append(produto + ";"+"\n");
-            escreverNoArquivo.close();
-            } catch (IOException ex) {
-            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");                      
-            }
-                                   
-    {  
+    
+             
+                 BufferedWriter escreverNoArquivo;
+             try {
+             escreverNoArquivo = new BufferedWriter(new FileWriter("BancoDeArquivos/produtos.txt", true));
+             escreverNoArquivo.append(produto + ";"+"\n");
+             escreverNoArquivo.close();
+             } catch (IOException ex) {
+             Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");                      
+             }
+                                    
+     {  
+     }
+     
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+       dispose();
     }                                        
 
 
@@ -117,4 +129,3 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     // End of variables declaration                   
 }
-
